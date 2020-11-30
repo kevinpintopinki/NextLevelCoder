@@ -1,5 +1,5 @@
 import pygame
-
+from components.ball import Ball
 from components.player import player
 from utils.constants import (
     SCREEN_HEIGHT,
@@ -31,6 +31,9 @@ class Game:
         Player = player()
         self.all_sprites.add(Player)
 
+        balls = pygame.sprite.Group()
+        ball = Ball ()
+        self.all_sprites.add(ball)
 
     def update(self):
         self.all_sprites.update()
