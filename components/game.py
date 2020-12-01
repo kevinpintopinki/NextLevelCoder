@@ -28,8 +28,8 @@ class Game:
 
     def create_components(self):
         self.all_sprites = pygame.sprite.Group()
-        Player = player()
-        self.all_sprites.add(Player)
+        self.Player = player(self)
+        self.all_sprites.add(self.Player)
 
         balls = pygame.sprite.Group()
         ball = Ball ()
@@ -42,6 +42,9 @@ class Game:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.playing = False
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    self.Player.shoot()
 
     def draw(self):
         self.screen.fill(BLACK)

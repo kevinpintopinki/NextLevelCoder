@@ -6,11 +6,12 @@ from utils.constants import (
 
 
 )
-
+from components.bullet import Bullet
 class player(pygame.sprite.Sprite):
 
-    def __init__(self):
+    def __init__(self,game):
         pygame.sprite.Sprite.__init__(self)
+        self.game = game
         self.image = pygame.Surface((40, 40))
         self.image.fill(GREEN)
         self.rect = self.image.get_rect()
@@ -28,3 +29,9 @@ class player(pygame.sprite.Sprite):
            self.rect.right =  SCREEN_WIDTH
         if self.rect.left <= 0:
             self.rect.left = 0
+
+    def shoot(self):
+        bullet = Bullet(self.rect.centerx, self.rect.top)
+        self.game.all_sprites.add(bullet)
+        self.bullets = pygame.sprite.Group()
+        self.bullets.add(bullet)
