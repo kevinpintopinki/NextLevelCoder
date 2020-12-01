@@ -11,11 +11,11 @@ class player(pygame.sprite.Sprite):
 
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.Surface((50, 50))
+        self.image = pygame.Surface((40, 40))
         self.image.fill(GREEN)
         self.rect = self.image.get_rect()
-        self.rect.centerx = SCREEN_WIDTH/2
-        self.rect.centery = SCREEN_HEIGHT/2
+        self.rect.centerx = SCREEN_WIDTH/1.1
+        self.rect.centery = SCREEN_HEIGHT/1.1
 
     def update(self):
         key = pygame.key.get_pressed()

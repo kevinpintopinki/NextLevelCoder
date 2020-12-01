@@ -34,5 +34,5 @@ class Ball(pygame.sprite.Sprite):
 
         if self.rect.bottom >= (SCREEN_HEIGHT):
             self.rect.bottom = (SCREEN_HEIGHT)
-            self.speedy = random.choice(allowed_speed)
+            self.speedy = random.choice(allowed_speed) * -1
 
