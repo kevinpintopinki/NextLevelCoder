@@ -28,15 +28,27 @@ class Game:
 
     def create_components(self):
         self.all_sprites = pygame.sprite.Group()
+        self.balls = pygame.sprite.Group()
         self.Player = player(self)
         self.all_sprites.add(self.Player)
-
-        balls = pygame.sprite.Group()
-        ball = Ball ()
+        ball = Ball (1)
         self.all_sprites.add(ball)
-
+        self.balls.add(ball)
     def update(self):
         self.all_sprites.update()
+        hits = pygame.sprite.spritecollide(self.Player, self.balls, False)
+        if hits:
+            print("GAME OVER")
+            self.playing = False
+        hits = pygame.sprite.groupcollide(self.balls, self.Player.bullets, True, True)
+        for hit in hits:
+            if hit.size < 4:
+                for i in range(0,2):
+                    ball = Ball(hit.size +1)
+                    self.all_sprites.add(ball)
+                    self.balls.add(ball)
+
+
 
     def events(self):
         for event in pygame.event.get():
