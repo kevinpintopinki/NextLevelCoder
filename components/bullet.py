@@ -9,7 +9,7 @@ class Bullet(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load(path.join(IMG_DIR, "bullet.png")).convert()
-        self.image = pygame.transform.scale(self.image, (20 , 20 ))
+        self.image = pygame.transform.scale(self.image, (10, 10 ))
         self.image.set_colorkey(BLACK)
         self.rect = self.image.get_rect()
         self.rect.bottom = y
